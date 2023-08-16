@@ -1,5 +1,14 @@
 # README
 
+app hecha con render: https://karipic-60gc.onrender.com/
+
+
+usuario author:
+
+E-mail: cheemssiel@gmail.com
+
+password: 111111
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
