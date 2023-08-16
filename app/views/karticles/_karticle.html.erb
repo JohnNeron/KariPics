@@ -1,0 +1,20 @@
+<div id="<%= dom_id karticle %>">
+  <p>
+    <% if karticle.kuser.avatar.persisted? %>
+      <%= image_tag karticle.kuser.avatar, class:"rounded-circle avatar avatar-photo mx-2" %> 
+    <% end %>
+
+ <strong> <%= karticle.kuser.name.capitalize %></strong>
+  </p>
+
+  <div class="text-center">
+    <% karticle.kimages.each do |kimage| %>
+      <%= image_tag kimage, class:"w-25" %>
+    <% end %>
+</div>
+
+  <p class="text-center mt-3">
+    <strong>Descripción de la Foto:</strong> <%= karticle.content %>
+  </p>
+
+</div>

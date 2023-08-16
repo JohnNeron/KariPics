@@ -1,0 +1,27 @@
+<%= form_with(model: karticle) do |form| %>
+  <% if karticle.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(karticle.errors.count, "error") %> prohibited this karticle from being saved:</h2>
+
+      <ul>
+        <% karticle.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="container">
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_field :content, class:"form-control" %>
+  </div>
+
+  <div class="form-group mb-3 ">
+    <%= form.label :kimages %>
+    <%= form.file_field :kimages, multiple: true, class:"form-controller" %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+</div>
+<% end %>

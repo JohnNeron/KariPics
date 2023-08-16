@@ -1,0 +1,39 @@
+<div class="card comments mt-3 mb-2 bg-dark text-light">
+  <div class="card-header border-bottom-0 font-weight-bold bg-transparent">Comentarios</div>
+  <ul class="list-group list-group-flush">
+    <% @karticle.kcomments.each do |comment| %>
+      <li class="list-group-item bg-dark text-light">
+        <header> 
+        <% if comment.kuser.avatar.persisted? %>
+        <%= image_tag comment.kuser.avatar, class:"rounded-circle avatar avatar-photo mx-2" %><strong><%= (comment.kuser.name.capitalize if comment.kuser) %></strong> wrote <%= distance_of_time_in_words(Time.current, comment.created_at) %> ago</header>
+        <% else %>
+        <header><strong><%= (comment.kuser.name.capitalize if comment.kuser) %></strong> wrote <%= distance_of_time_in_words(Time.current, comment.created_at) %> ago</header>
+        <% end %>
+        <div><strong><%= comment.content.capitalize %></strong></div>
+         <% if comment.kuser == current_kuser %>
+         <div class="mt-2 d-flex justify-content-right">
+        <%= button_to "Eliminar comentario", comment, method: :delete, class:"btn btn-secondary mx-2" %>
+        </div>
+            <% end %>
+      </li>
+    <% end %>
+
+    <% if @karticle.kcomments.empty? %>
+      <li class="list-group-item text-center">Sé el primero en comentar</li>
+    <% end %>
+  </ul>
+</div>
+<div class="card bg-dark">
+  <div class="card-body">
+    <p class="text-light">Comenta:</p>
+    <%= form_for @karticle.kcomments.build do |f| %>
+      <%= f.hidden_field :karticle_id, value: @karticle.id %>
+      <div class="form-group">
+        <%= f.text_area :content, rows: 3, class: "form-control" %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "Comentar", class: "btn btn-secondary mt-3" %>
+      </div>
+    <% end %>
+  </div>
+</div>

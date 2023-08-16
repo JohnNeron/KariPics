@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Fotos Publicadas</h1>
+
+<div id="karticles">
+  <% @karticles.each do |karticle| %>
+    <%= render karticle %>
+      <p class="text-center">
+        <%= link_to "Mostrar Foto y Comentar", karticle, class:"btn btn-secondary" %>
+      </p>
+  <% end %>
+
+<% if Kuser.first == current_kuser %>
+  <%= link_to "New karticle", new_karticle_path, class:"btn btn-secondary" %>
+<% end %>
+
+
